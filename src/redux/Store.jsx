@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import interactionReducer from "./interactionSlice";
 import searchReducer from "./searchSlice";
 
 
-export const store = configureStore({
+const store = configureStore({
 
-  reducer:{
+  reducer: {
 
     interaction: interactionReducer,
 
@@ -14,3 +15,6 @@ export const store = configureStore({
   }
 
 });
+
+
+export default store;

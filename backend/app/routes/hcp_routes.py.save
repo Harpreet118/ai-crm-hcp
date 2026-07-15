@@ -1,0 +1,42 @@
+
+
+
+
+
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from app.database.session import get_db
+from app.models.hcp import HCP
+from app.schemas.hcp_schema import HCPCreate
+
+
+router = APIRouter()
+
+
+@router.post("/hcp")
+def create_hcp(
+    data: HCPCreate,
+    db: Session = Depends(get_db)
+):
+
+    hcp = HCP(
+        name=data.name,
+        speciality=data.speciality,
+        location=data.location
+    )
+
+    db.add(hcp)
+    db.commit()
+    db.refresh(hcp)
+
+clear
+
+
+
+
+
+
+
+
+

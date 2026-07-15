@@ -1,37 +1,73 @@
-import { BrainCircuit, Sparkles } from "lucide-react";
+import { Bot, Bell, Search, UserCircle2 } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
-  return (
-    <header className="bg-white border-b border-slate-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? "text-blue-600 font-semibold"
+      : "text-slate-600 hover:text-blue-600 transition";
 
-        {/* Left */}
+  return (
+    <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
+
+        {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center">
-            <BrainCircuit className="text-white" size={24} />
+          <div className="bg-blue-600 p-2 rounded-xl">
+            <Bot className="text-white" size={22} />
           </div>
 
           <div>
-            <h1 className="text-2xl font-bold text-slate-800">
-              AI CRM
-            </h1>
-
-            <p className="text-sm text-slate-500">
-              Healthcare Professional Interaction
+            <h1 className="font-bold text-lg">AI CRM HCP</h1>
+            <p className="text-xs text-slate-500">
+              Healthcare Assistant
             </p>
           </div>
         </div>
 
-        {/* Right */}
-        <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-full">
-          <Sparkles
-            className="text-emerald-600"
-            size={18}
-          />
+        {/* Navigation */}
+        <nav className="hidden md:flex gap-8">
+          <NavLink to="/" className={linkClass}>
+            Dashboard
+          </NavLink>
 
-          <span className="text-sm font-medium text-emerald-700">
-            AI Powered
-          </span>
+          <NavLink
+  to="/add-hcp"
+  className={linkClass}
+>
+  Add HCP
+</NavLink>
+          <NavLink to="/hcps" className={linkClass}>
+            HCPs
+          </NavLink>
+
+          <NavLink to="/history" className={linkClass}>
+            History
+          </NavLink>
+
+          <NavLink to="/followup" className={linkClass}>
+            Follow Ups
+          </NavLink>
+
+        </nav>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-2 border rounded-lg px-3 py-2">
+            <Search size={18} />
+            <input
+              type="text"
+              placeholder="Search..."
+              className="outline-none text-sm"
+            />
+          </div>
+
+          <Bell className="cursor-pointer text-slate-600" />
+
+          <UserCircle2
+            size={34}
+            className="text-blue-600 cursor-pointer"
+          />
         </div>
 
       </div>

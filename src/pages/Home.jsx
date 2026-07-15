@@ -1,17 +1,18 @@
-import Navbar from "../components/layout/Navbar.jsx";
-import InteractionForm from "../components/form/InteractionForm.jsx";
-import ChatPanel from "../components/chat/ChatPanel.jsx";
+import Layout from "../components/layout/Layout";
+import DashboardCards from "../components/dashboard/DashboardCard";
+import InteractionForm from "../components/form/InteractionForm";
+import ChatPanel from "../components/chat/ChatPanel";
 
 function Home() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Navbar />
+    <Layout>
+      <DashboardCards />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
         <InteractionForm />
         <ChatPanel />
       </div>
-    </div>
+    </Layout>
   );
 }
 
